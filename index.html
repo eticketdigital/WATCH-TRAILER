@@ -1,1 +1,143 @@
-https://eticketdigital.github.io/VIEW-SEAT-PLAN/
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Watch Trailer</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#000;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+}
+
+/* Background */
+.bg{
+    position:absolute;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    filter:brightness(40%);
+}
+
+/* Tombol */
+.watch-btn{
+    position:relative;
+    z-index:10;
+    padding:18px 40px;
+    border:none;
+    border-radius:60px;
+    background:linear-gradient(45deg,#ff0000,#ff5e00);
+    color:#fff;
+    font-size:22px;
+    font-weight:bold;
+    cursor:pointer;
+    box-shadow:0 0 30px rgba(255,0,0,0.7);
+    transition:0.3s;
+}
+
+.watch-btn:hover{
+    transform:scale(1.08);
+    box-shadow:0 0 50px rgba(255,80,0,1);
+}
+
+/* Popup Video */
+.modal{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.9);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:999;
+    animation:fadeIn 0.4s ease;
+}
+
+.modal video{
+    width:90%;
+    max-width:900px;
+    border-radius:20px;
+    box-shadow:0 0 40px rgba(255,255,255,0.2);
+}
+
+.close{
+    position:absolute;
+    top:20px;
+    right:30px;
+    color:white;
+    font-size:40px;
+    cursor:pointer;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+    }
+    to{
+        opacity:1;
+    }
+}
+</style>
+</head>
+<body>
+
+<!-- Background -->
+<img src="poster.jpg" class="bg">
+
+<!-- Tombol -->
+<button class="watch-btn" onclick="openTrailer()">
+▶ WATCH TRAILER
+</button>
+
+<!-- Modal -->
+<div class="modal" id="trailerModal">
+
+    <div class="close" onclick="closeTrailer()">✕</div>
+
+    <video id="trailerVideo" controls>
+        <source src="trailer.mp4" type="video/mp4">
+        Browser tidak mendukung video.
+    </video>
+
+</div>
+
+<script>
+
+function openTrailer(){
+    const modal = document.getElementById("trailerModal");
+    const video = document.getElementById("trailerVideo");
+
+    modal.style.display = "flex";
+
+    video.play();
+}
+
+function closeTrailer(){
+    const modal = document.getElementById("trailerModal");
+    const video = document.getElementById("trailerVideo");
+
+    modal.style.display = "none";
+
+    video.pause();
+    video.currentTime = 0;
+}
+
+</script>
+
+</body>
+</html>
