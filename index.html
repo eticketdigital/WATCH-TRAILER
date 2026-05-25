@@ -18,13 +18,13 @@
 
 body{
     overflow:hidden;
-    background:#000;
+    background:black;
     font-family:'Orbitron',sans-serif;
 }
 
-/* ========================= */
+/* ============================= */
 /* VIDEO BACKGROUND */
-/* ========================= */
+/* ============================= */
 
 #bgVideo{
     position:fixed;
@@ -33,13 +33,13 @@ body{
     width:100%;
     height:100%;
     object-fit:cover;
-    z-index:-5;
-    filter:brightness(45%);
+    z-index:-10;
+    filter:brightness(40%);
 }
 
-/* ========================= */
+/* ============================= */
 /* DARK OVERLAY */
-/* ========================= */
+/* ============================= */
 
 .overlay{
     position:fixed;
@@ -48,65 +48,63 @@ body{
     radial-gradient(circle at center,
     rgba(255,0,0,0.15),
     rgba(0,0,0,0.88));
-    z-index:-4;
+    z-index:-9;
 }
 
-/* ========================= */
-/* MOVING LIGHTS */
-/* ========================= */
+/* ============================= */
+/* MOVING LIGHT EFFECT */
+/* ============================= */
 
 .lights::before,
 .lights::after{
     content:"";
     position:absolute;
-    width:600px;
-    height:600px;
+    width:700px;
+    height:700px;
     border-radius:50%;
     filter:blur(120px);
-    animation:moveLight 8s infinite alternate;
+    animation:moveLight 10s infinite alternate;
 }
 
 .lights::before{
     background:rgba(255,0,0,0.35);
-    top:-100px;
-    left:-100px;
+    top:-200px;
+    left:-200px;
 }
 
 .lights::after{
-    background:rgba(0,140,255,0.35);
-    bottom:-100px;
-    right:-100px;
+    background:rgba(0,120,255,0.35);
+    bottom:-200px;
+    right:-200px;
 }
 
 @keyframes moveLight{
     from{
-        transform:translateY(0) translateX(0);
+        transform:translate(0,0);
     }
     to{
-        transform:translateY(100px) translateX(80px);
+        transform:translate(120px,80px);
     }
 }
 
-/* ========================= */
-/* PARTICLE EFFECT */
-/* ========================= */
+/* ============================= */
+/* PARTICLES */
+/* ============================= */
 
 .particles{
     position:absolute;
     width:100%;
     height:100%;
     overflow:hidden;
-    z-index:-3;
+    z-index:-8;
 }
 
 .particles span{
     position:absolute;
     display:block;
-    width:4px;
-    height:4px;
     background:white;
     border-radius:50%;
-    animation:float 10s linear infinite;
+    animation:float 12s linear infinite;
     opacity:0.7;
 }
 
@@ -119,9 +117,9 @@ body{
     }
 }
 
-/* ========================= */
+/* ============================= */
 /* MAIN CONTENT */
-/* ========================= */
+/* ============================= */
 
 .container{
     position:relative;
@@ -129,64 +127,66 @@ body{
     width:100%;
     height:100vh;
     display:flex;
+    flex-direction:column;
     justify-content:center;
     align-items:center;
-    flex-direction:column;
     text-align:center;
-    color:white;
     padding:20px;
+    color:white;
 }
 
-/* ========================= */
+/* ============================= */
 /* LOGO */
-/* ========================= */
+/* ============================= */
 
 .logo{
     width:220px;
     margin-bottom:25px;
-    animation:zoomLogo 4s infinite alternate;
     filter:drop-shadow(0 0 20px red);
+    animation:logoZoom 4s infinite alternate;
 }
 
-@keyframes zoomLogo{
+@keyframes logoZoom{
     from{
         transform:scale(1);
     }
     to{
-        transform:scale(1.05);
+        transform:scale(1.06);
     }
 }
 
-/* ========================= */
+/* ============================= */
 /* TITLE */
-/* ========================= */
+/* ============================= */
 
 .title{
     font-size:70px;
     font-weight:900;
-    text-transform:uppercase;
     line-height:1.1;
+    text-transform:uppercase;
+
     text-shadow:
-    0 0 10px #fff,
+    0 0 10px white,
     0 0 20px red,
     0 0 40px red;
+
     animation:fadeUp 2s ease;
 }
 
 .subtitle{
-    margin-top:15px;
+    margin-top:20px;
     font-size:20px;
     letter-spacing:4px;
     opacity:0.9;
     animation:fadeUp 3s ease;
 }
 
-/* ========================= */
+/* ============================= */
 /* COUNTDOWN */
-/* ========================= */
+/* ============================= */
 
 .countdown{
-    margin-top:35px;
+    margin-top:40px;
     display:flex;
     gap:15px;
     flex-wrap:wrap;
@@ -196,15 +196,17 @@ body{
 .time-box{
     width:90px;
     height:90px;
-    border:2px solid rgba(255,255,255,0.2);
     border-radius:20px;
     backdrop-filter:blur(10px);
-    background:rgba(255,255,255,0.05);
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.15);
+
     display:flex;
     justify-content:center;
     align-items:center;
     flex-direction:column;
-    box-shadow:0 0 20px rgba(255,0,0,0.2);
+
+    box-shadow:0 0 20px rgba(255,0,0,0.25);
 }
 
 .time-box h2{
@@ -216,9 +218,9 @@ body{
     opacity:0.7;
 }
 
-/* ========================= */
+/* ============================= */
 /* BUTTONS */
-/* ========================= */
+/* ============================= */
 
 .buttons{
     margin-top:45px;
@@ -257,53 +259,58 @@ body{
 }
 
 .watch{
-    background:linear-gradient(45deg,#ff0000,#ff6a00);
-    box-shadow:0 0 30px rgba(255,0,0,0.7);
+    background:linear-gradient(45deg,#ff0000,#ff7300);
+    box-shadow:0 0 30px rgba(255,0,0,0.8);
 }
 
 .ticket{
-    background:linear-gradient(45deg,#0066ff,#00ccff);
-    box-shadow:0 0 30px rgba(0,140,255,0.7);
+    background:linear-gradient(45deg,#0066ff,#00c3ff);
+    box-shadow:0 0 30px rgba(0,120,255,0.8);
+}
+
+.music{
+    background:linear-gradient(45deg,#00aa55,#00ff99);
+    box-shadow:0 0 30px rgba(0,255,120,0.8);
 }
 
 .btn:hover{
     transform:scale(1.08);
 }
 
-/* ========================= */
-/* TRAILER MODAL */
-/* ========================= */
+/* ============================= */
+/* MODAL TRAILER */
+/* ============================= */
 
 .modal{
     position:fixed;
     inset:0;
-    background:rgba(0,0,0,0.95);
+    background:rgba(0,0,0,0.96);
     display:none;
     justify-content:center;
     align-items:center;
     z-index:999;
-    animation:fadeIn 0.5s ease;
+    animation:fadeIn 0.4s ease;
 }
 
 .modal video{
     width:90%;
     max-width:1000px;
     border-radius:25px;
-    box-shadow:0 0 60px rgba(255,255,255,0.2);
+    box-shadow:0 0 50px rgba(255,255,255,0.2);
 }
 
 .close{
     position:absolute;
     top:20px;
     right:35px;
-    color:white;
     font-size:45px;
+    color:white;
     cursor:pointer;
 }
 
-/* ========================= */
-/* ANIMATIONS */
-/* ========================= */
+/* ============================= */
+/* ANIMATION */
+/* ============================= */
 
 @keyframes fadeIn{
     from{
@@ -325,9 +332,9 @@ body{
     }
 }
 
-/* ========================= */
+/* ============================= */
 /* MOBILE */
-/* ========================= */
+/* ============================= */
 
 @media(max-width:768px){
 
@@ -370,11 +377,16 @@ body{
 <!-- OVERLAY -->
 <div class="overlay"></div>
 
-<!-- MOVING LIGHTS -->
+<!-- LIGHT EFFECT -->
 <div class="lights"></div>
 
 <!-- PARTICLES -->
 <div class="particles" id="particles"></div>
+
+<!-- AUDIO -->
+<audio id="bgMusic" loop>
+    <source src="intro.mp3" type="audio/mpeg">
+</audio>
 
 <!-- CONTENT -->
 <div class="container">
@@ -388,6 +400,7 @@ body{
         LIVE IN CONCERT
     </div>
 
+    <!-- SUBTITLE -->
     <div class="subtitle">
         OFFICIAL ULTRA CINEMATIC TRAILER
     </div>
@@ -417,7 +430,7 @@ body{
 
     </div>
 
-    <!-- BUTTONS -->
+    <!-- BUTTON -->
     <div class="buttons">
 
         <button class="btn watch" onclick="openTrailer()">
@@ -428,44 +441,49 @@ body{
             🎟 BUY TICKET
         </button>
 
+        <button class="btn music" onclick="toggleMusic()" id="musicBtn">
+            🔊 MUSIC ON
+        </button>
+
     </div>
 
 </div>
 
-<!-- MODAL TRAILER -->
+<!-- MODAL -->
 <div class="modal" id="trailerModal">
 
     <div class="close" onclick="closeTrailer()">✕</div>
 
     <video controls id="trailerVideo">
+
         <source src="trailer.mp4" type="video/mp4">
+
     </video>
 
 </div>
 
-<!-- AUDIO -->
-<audio autoplay loop>
-    <source src="intro.mp3" type="audio/mpeg">
-</audio>
-
 <script>
 
-/* ========================= */
+/* ============================= */
 /* PARTICLES */
-/* ========================= */
+/* ============================= */
 
-const particles = document.getElementById("particles");
+const particles =
+document.getElementById("particles");
 
-for(let i=0;i<80;i++){
+for(let i=0;i<90;i++){
 
-    const span = document.createElement("span");
+    const span =
+    document.createElement("span");
 
-    span.style.left = Math.random()*100 + "%";
+    span.style.left =
+    Math.random()*100 + "%";
 
     span.style.animationDuration =
-    (Math.random()*8 + 5) + "s";
+    (Math.random()*10 + 5) + "s";
 
-    span.style.opacity = Math.random();
+    span.style.opacity =
+    Math.random();
 
     span.style.width =
     span.style.height =
@@ -474,9 +492,47 @@ for(let i=0;i<80;i++){
     particles.appendChild(span);
 }
 
-/* ========================= */
-/* MODAL */
-/* ========================= */
+/* ============================= */
+/* AUTO PLAY MUSIC */
+/* ============================= */
+
+document.body.addEventListener("click", function(){
+
+    const music =
+    document.getElementById("bgMusic");
+
+    music.play();
+
+}, { once:true });
+
+/* ============================= */
+/* TOGGLE MUSIC */
+/* ============================= */
+
+const music =
+document.getElementById("bgMusic");
+
+function toggleMusic(){
+
+    if(music.paused){
+
+        music.play();
+
+        document.getElementById("musicBtn")
+        .innerHTML="🔊 MUSIC ON";
+
+    }else{
+
+        music.pause();
+
+        document.getElementById("musicBtn")
+        .innerHTML="🔇 MUSIC OFF";
+    }
+}
+
+/* ============================= */
+/* OPEN TRAILER */
+/* ============================= */
 
 function openTrailer(){
 
@@ -491,6 +547,10 @@ function openTrailer(){
     video.play();
 }
 
+/* ============================= */
+/* CLOSE TRAILER */
+/* ============================= */
+
 function closeTrailer(){
 
     const modal =
@@ -503,21 +563,23 @@ function closeTrailer(){
 
     video.pause();
 
-    video.currentTime = 0;
+    video.currentTime=0;
 }
 
-/* ========================= */
+/* ============================= */
 /* COUNTDOWN */
-/* ========================= */
+/* ============================= */
 
 const targetDate =
 new Date("Dec 31, 2026 20:00:00").getTime();
 
 setInterval(()=>{
 
-    const now = new Date().getTime();
+    const now =
+    new Date().getTime();
 
-    const distance = targetDate - now;
+    const distance =
+    targetDate - now;
 
     const days =
     Math.floor(distance/(1000*60*60*24));
@@ -533,10 +595,17 @@ setInterval(()=>{
     const seconds =
     Math.floor((distance%(1000*60))/1000);
 
-    document.getElementById("days").innerHTML = days;
-    document.getElementById("hours").innerHTML = hours;
-    document.getElementById("minutes").innerHTML = minutes;
-    document.getElementById("seconds").innerHTML = seconds;
+    document.getElementById("days")
+    .innerHTML = days;
+
+    document.getElementById("hours")
+    .innerHTML = hours;
+
+    document.getElementById("minutes")
+    .innerHTML = minutes;
+
+    document.getElementById("seconds")
+    .innerHTML = seconds;
 
 },1000);
 
