@@ -4,85 +4,306 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Watch Trailer</title>
+<title>ULTRA CINEMATIC TRAILER</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
 
 <style>
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial, sans-serif;
 }
 
 body{
-    background:#000;
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
     overflow:hidden;
+    background:#000;
+    font-family:'Orbitron',sans-serif;
 }
 
-/* Background */
-.bg{
-    position:absolute;
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    filter:brightness(40%);
-}
+/* ========================= */
+/* VIDEO BACKGROUND */
+/* ========================= */
 
-/* Tombol */
-.watch-btn{
-    position:relative;
-    z-index:10;
-    padding:18px 40px;
-    border:none;
-    border-radius:60px;
-    background:linear-gradient(45deg,#ff0000,#ff5e00);
-    color:#fff;
-    font-size:22px;
-    font-weight:bold;
-    cursor:pointer;
-    box-shadow:0 0 30px rgba(255,0,0,0.7);
-    transition:0.3s;
-}
-
-.watch-btn:hover{
-    transform:scale(1.08);
-    box-shadow:0 0 50px rgba(255,80,0,1);
-}
-
-/* Popup Video */
-.modal{
+#bgVideo{
     position:fixed;
     top:0;
     left:0;
     width:100%;
     height:100%;
-    background:rgba(0,0,0,0.9);
+    object-fit:cover;
+    z-index:-5;
+    filter:brightness(45%);
+}
+
+/* ========================= */
+/* DARK OVERLAY */
+/* ========================= */
+
+.overlay{
+    position:fixed;
+    inset:0;
+    background:
+    radial-gradient(circle at center,
+    rgba(255,0,0,0.15),
+    rgba(0,0,0,0.88));
+    z-index:-4;
+}
+
+/* ========================= */
+/* MOVING LIGHTS */
+/* ========================= */
+
+.lights::before,
+.lights::after{
+    content:"";
+    position:absolute;
+    width:600px;
+    height:600px;
+    border-radius:50%;
+    filter:blur(120px);
+    animation:moveLight 8s infinite alternate;
+}
+
+.lights::before{
+    background:rgba(255,0,0,0.35);
+    top:-100px;
+    left:-100px;
+}
+
+.lights::after{
+    background:rgba(0,140,255,0.35);
+    bottom:-100px;
+    right:-100px;
+}
+
+@keyframes moveLight{
+    from{
+        transform:translateY(0) translateX(0);
+    }
+    to{
+        transform:translateY(100px) translateX(80px);
+    }
+}
+
+/* ========================= */
+/* PARTICLE EFFECT */
+/* ========================= */
+
+.particles{
+    position:absolute;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    z-index:-3;
+}
+
+.particles span{
+    position:absolute;
+    display:block;
+    width:4px;
+    height:4px;
+    background:white;
+    border-radius:50%;
+    animation:float 10s linear infinite;
+    opacity:0.7;
+}
+
+@keyframes float{
+    from{
+        transform:translateY(100vh) scale(0);
+    }
+    to{
+        transform:translateY(-10vh) scale(1);
+    }
+}
+
+/* ========================= */
+/* MAIN CONTENT */
+/* ========================= */
+
+.container{
+    position:relative;
+    z-index:10;
+    width:100%;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    text-align:center;
+    color:white;
+    padding:20px;
+}
+
+/* ========================= */
+/* LOGO */
+/* ========================= */
+
+.logo{
+    width:220px;
+    margin-bottom:25px;
+    animation:zoomLogo 4s infinite alternate;
+    filter:drop-shadow(0 0 20px red);
+}
+
+@keyframes zoomLogo{
+    from{
+        transform:scale(1);
+    }
+    to{
+        transform:scale(1.05);
+    }
+}
+
+/* ========================= */
+/* TITLE */
+/* ========================= */
+
+.title{
+    font-size:70px;
+    font-weight:900;
+    text-transform:uppercase;
+    line-height:1.1;
+    text-shadow:
+    0 0 10px #fff,
+    0 0 20px red,
+    0 0 40px red;
+    animation:fadeUp 2s ease;
+}
+
+.subtitle{
+    margin-top:15px;
+    font-size:20px;
+    letter-spacing:4px;
+    opacity:0.9;
+    animation:fadeUp 3s ease;
+}
+
+/* ========================= */
+/* COUNTDOWN */
+/* ========================= */
+
+.countdown{
+    margin-top:35px;
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.time-box{
+    width:90px;
+    height:90px;
+    border:2px solid rgba(255,255,255,0.2);
+    border-radius:20px;
+    backdrop-filter:blur(10px);
+    background:rgba(255,255,255,0.05);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    box-shadow:0 0 20px rgba(255,0,0,0.2);
+}
+
+.time-box h2{
+    font-size:28px;
+}
+
+.time-box span{
+    font-size:11px;
+    opacity:0.7;
+}
+
+/* ========================= */
+/* BUTTONS */
+/* ========================= */
+
+.buttons{
+    margin-top:45px;
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.btn{
+    padding:18px 40px;
+    border:none;
+    border-radius:60px;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.4s;
+    color:white;
+    position:relative;
+    overflow:hidden;
+}
+
+.btn::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-100%;
+    width:100%;
+    height:100%;
+    background:rgba(255,255,255,0.2);
+    transition:0.5s;
+}
+
+.btn:hover::before{
+    left:100%;
+}
+
+.watch{
+    background:linear-gradient(45deg,#ff0000,#ff6a00);
+    box-shadow:0 0 30px rgba(255,0,0,0.7);
+}
+
+.ticket{
+    background:linear-gradient(45deg,#0066ff,#00ccff);
+    box-shadow:0 0 30px rgba(0,140,255,0.7);
+}
+
+.btn:hover{
+    transform:scale(1.08);
+}
+
+/* ========================= */
+/* TRAILER MODAL */
+/* ========================= */
+
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.95);
     display:none;
     justify-content:center;
     align-items:center;
     z-index:999;
-    animation:fadeIn 0.4s ease;
+    animation:fadeIn 0.5s ease;
 }
 
 .modal video{
     width:90%;
-    max-width:900px;
-    border-radius:20px;
-    box-shadow:0 0 40px rgba(255,255,255,0.2);
+    max-width:1000px;
+    border-radius:25px;
+    box-shadow:0 0 60px rgba(255,255,255,0.2);
 }
 
 .close{
     position:absolute;
     top:20px;
-    right:30px;
+    right:35px;
     color:white;
-    font-size:40px;
+    font-size:45px;
     cursor:pointer;
 }
+
+/* ========================= */
+/* ANIMATIONS */
+/* ========================= */
 
 @keyframes fadeIn{
     from{
@@ -92,50 +313,232 @@ body{
         opacity:1;
     }
 }
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* ========================= */
+/* MOBILE */
+/* ========================= */
+
+@media(max-width:768px){
+
+.title{
+    font-size:42px;
+}
+
+.subtitle{
+    font-size:14px;
+}
+
+.logo{
+    width:150px;
+}
+
+.time-box{
+    width:70px;
+    height:70px;
+}
+
+.time-box h2{
+    font-size:20px;
+}
+
+.btn{
+    width:100%;
+}
+
+}
+
 </style>
 </head>
 <body>
 
-<!-- Background -->
-<img src="poster.jpg" class="bg">
+<!-- VIDEO BACKGROUND -->
+<video autoplay muted loop playsinline id="bgVideo">
+    <source src="trailer.mp4" type="video/mp4">
+</video>
 
-<!-- Tombol -->
-<button class="watch-btn" onclick="openTrailer()">
-▶ WATCH TRAILER
-</button>
+<!-- OVERLAY -->
+<div class="overlay"></div>
 
-<!-- Modal -->
+<!-- MOVING LIGHTS -->
+<div class="lights"></div>
+
+<!-- PARTICLES -->
+<div class="particles" id="particles"></div>
+
+<!-- CONTENT -->
+<div class="container">
+
+    <!-- LOGO -->
+    <img src="logo.png" class="logo">
+
+    <!-- TITLE -->
+    <div class="title">
+        WESTLIFE<br>
+        LIVE IN CONCERT
+    </div>
+
+    <div class="subtitle">
+        OFFICIAL ULTRA CINEMATIC TRAILER
+    </div>
+
+    <!-- COUNTDOWN -->
+    <div class="countdown">
+
+        <div class="time-box">
+            <h2 id="days">00</h2>
+            <span>DAYS</span>
+        </div>
+
+        <div class="time-box">
+            <h2 id="hours">00</h2>
+            <span>HOURS</span>
+        </div>
+
+        <div class="time-box">
+            <h2 id="minutes">00</h2>
+            <span>MINUTES</span>
+        </div>
+
+        <div class="time-box">
+            <h2 id="seconds">00</h2>
+            <span>SECONDS</span>
+        </div>
+
+    </div>
+
+    <!-- BUTTONS -->
+    <div class="buttons">
+
+        <button class="btn watch" onclick="openTrailer()">
+            ▶ WATCH TRAILER
+        </button>
+
+        <button class="btn ticket">
+            🎟 BUY TICKET
+        </button>
+
+    </div>
+
+</div>
+
+<!-- MODAL TRAILER -->
 <div class="modal" id="trailerModal">
 
     <div class="close" onclick="closeTrailer()">✕</div>
 
-    <video id="trailerVideo" controls>
+    <video controls id="trailerVideo">
         <source src="trailer.mp4" type="video/mp4">
-        Browser tidak mendukung video.
     </video>
 
 </div>
 
+<!-- AUDIO -->
+<audio autoplay loop>
+    <source src="intro.mp3" type="audio/mpeg">
+</audio>
+
 <script>
 
-function openTrailer(){
-    const modal = document.getElementById("trailerModal");
-    const video = document.getElementById("trailerVideo");
+/* ========================= */
+/* PARTICLES */
+/* ========================= */
 
-    modal.style.display = "flex";
+const particles = document.getElementById("particles");
+
+for(let i=0;i<80;i++){
+
+    const span = document.createElement("span");
+
+    span.style.left = Math.random()*100 + "%";
+
+    span.style.animationDuration =
+    (Math.random()*8 + 5) + "s";
+
+    span.style.opacity = Math.random();
+
+    span.style.width =
+    span.style.height =
+    (Math.random()*4 + 2) + "px";
+
+    particles.appendChild(span);
+}
+
+/* ========================= */
+/* MODAL */
+/* ========================= */
+
+function openTrailer(){
+
+    const modal =
+    document.getElementById("trailerModal");
+
+    const video =
+    document.getElementById("trailerVideo");
+
+    modal.style.display="flex";
 
     video.play();
 }
 
 function closeTrailer(){
-    const modal = document.getElementById("trailerModal");
-    const video = document.getElementById("trailerVideo");
 
-    modal.style.display = "none";
+    const modal =
+    document.getElementById("trailerModal");
+
+    const video =
+    document.getElementById("trailerVideo");
+
+    modal.style.display="none";
 
     video.pause();
+
     video.currentTime = 0;
 }
+
+/* ========================= */
+/* COUNTDOWN */
+/* ========================= */
+
+const targetDate =
+new Date("Dec 31, 2026 20:00:00").getTime();
+
+setInterval(()=>{
+
+    const now = new Date().getTime();
+
+    const distance = targetDate - now;
+
+    const days =
+    Math.floor(distance/(1000*60*60*24));
+
+    const hours =
+    Math.floor((distance%(1000*60*60*24))
+    /(1000*60*60));
+
+    const minutes =
+    Math.floor((distance%(1000*60*60))
+    /(1000*60));
+
+    const seconds =
+    Math.floor((distance%(1000*60))/1000);
+
+    document.getElementById("days").innerHTML = days;
+    document.getElementById("hours").innerHTML = hours;
+    document.getElementById("minutes").innerHTML = minutes;
+    document.getElementById("seconds").innerHTML = seconds;
+
+},1000);
 
 </script>
 
